@@ -10,6 +10,7 @@ var addStreamingRouter = require('./routes/addStreaming');
 var stopStreamingRouter = require('./routes/stop');
 
 var saveStreamingRouter = require('./routes/save');
+var startExisting = require('./routes/startexisting');
 
 
 var ports = require('./public/javascripts/state')
@@ -31,6 +32,7 @@ app.use('/status', usersRouter);
 app.use('/addStreaming', addStreamingRouter);
 app.use('/stop', stopStreamingRouter);
 app.use('/save', saveStreamingRouter);
+app.use('/startExisting', startExisting);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

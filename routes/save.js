@@ -15,36 +15,50 @@ router.get('/', function(req, res, next)
     var port = req.param('port');
     var output = req.param('output');
 
-    fs.readFile('saved', 'utf8', function (err,data) {
-        if (err)
-            {
-            return console.log(err);
-        }
-        res.send(data);
-        var allData = data.split('\n');
+    var string = host1 + ',' + host2 + ',' + host3 + ',' + host4 + ',' + port + ',' + output + '\n';
 
-        for(var i = 0; i < allData.length; i++)
-        {
+    if (!fs.existsSync('saved')) {
 
-        }
+        fs.writeFile("saved", string, function (err) {
+            if (err) {
+                res.send('Error Saving file');
+                return;
+            }
+
+            res.send('Saved successfully !!');
+            return;
+        });
+
+    }
+    else {
+        fs.readFile('saved', 'utf8', function (err, data) {
+            if (err) {
+                return console.log(err);
+            }
+            var allData = data.split('\n');
+
+            for (var i = 0; i < allData.length; i++) {
+                if (allData[i].split(',').length == 6) {
+                    if (allData[i].split(',')[4] == port || allData[i].split(',')[5] == output) {
+                        res.send('Duplicate port or OutputFile');
+                        return;
+                    }
+                }
+            }
 
 
-        if(true)
-        {
-            var string = host1 + ',' + host2 + ',' + host3 + ',' + host4 + ',' + port + ',' + output;
-            fs.writeFile("saved", string, function (err) {
+            fs.appendFile("saved", string, function (err) {
                 if (err) {
                     res.send('Error Saving file');
+                    return;
                 }
 
                 res.send('Saved successfully !!');
+                return;
             });
-        }
-        else
-        {
-            res.send('Duplicate port or OutputFile');
-        }
-    });
+
+        });
+    }
 
 
 

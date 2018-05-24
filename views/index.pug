@@ -12,34 +12,37 @@ html(lang='en')
         .container
             h2 Stream Combiner
             a.btn.btn-info(href="/status") Server Status
+            a.btn.btn-success.pull-right(href="/startExisting") Run from saved
+            br
+            br
             form#form.form-horizontal(action='/addStreaming')
                 .form-group
                     label.control-label.col-sm-2(for='link1' ) Link1:
                     .col-sm-10
-                        input#link1.form-control(type='text', placeholder='Enter link1', name='link1' , required='', value='http://cdnfeedd.ddns.net/live/splitscreen4channels/CMcSoOxyPc/2609.ts')
+                        input#link1.form-control(type='text', placeholder='Enter link1', name='link1' , required='', value='')
                 .form-group
                     label.control-label.col-sm-2(for='link2') Link2:
                     .col-sm-10
-                        input#link2.form-control(type='text', placeholder='Enter link2', name='link2' , required='', value='http://cdnfeedd.ddns.net:80/live/splitscreen4channels/CMcSoOxyPc/249.ts')
+                        input#link2.form-control(type='text', placeholder='Enter link2', name='link2' , required='', value='')
                 .form-group
                     label.control-label.col-sm-2(for='link3') Link3:
                     .col-sm-10
-                        input#link3.form-control(type='text', placeholder='Enter link3', name='link3' , required='', value='http://cdnfeedd.ddns.net:80/live/splitscreen4channels/CMcSoOxyPc/246.ts')
+                        input#link3.form-control(type='text', placeholder='Enter link3', name='link3' , required='', value='')
                 .form-group
                     label.control-label.col-sm-2(for='link4') Link4:
                     .col-sm-10
-                        input#link4.form-control(type='text', placeholder='Enter link4', name='link4' , required='', value='http://cdnfeedd.ddns.net:80/live/splitscreen4channels/CMcSoOxyPc/2608.ts')
+                        input#link4.form-control(type='text', placeholder='Enter link4', name='link4' , required='', value='')
                 .form-group
                     label.control-label.col-sm-2(for='port') Port:
                     .col-sm-10
-                        input#port.form-control(type='text', placeholder='Enter port', name='port' , required='', value='3560')
+                        input#port.form-control(type='text', placeholder='Enter port', name='port' , required='', value='')
                 .form-group
                     label.control-label.col-sm-2(for='output') Output file name:
                     .col-sm-10
-                        input#output.form-control(type='text', placeholder='Enter Output file name', name='output' , required='', value='output')
+                        input#output.form-control(type='text', placeholder='Enter Output file name', name='output' , required='', value='')
                 .form-group
                     .col-sm-offset-2.col-sm-10
                         button.btn.btn-default(type='submit') Start Streaming
                 .form-group
                     .col-sm-offset-2.col-sm-10
-                        button#save.btn.btn-default(type='button') Save this Streaming
+                        button#save.btn.btn-info.pull-right(type='button') Save this Streaming

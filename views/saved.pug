@@ -1,0 +1,27 @@
+doctype html
+html(lang='en')
+    head
+        title Server Status
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    body
+        .container
+            h2 Servers
+            table.table.table-striped
+                thead
+                    tr
+                        th index
+                        th Port
+                        th Output file
+                        th Operation
+                tbody
+                    each val,index in saved_data
+                        tr
+                            td=index+1
+                            td=val.split(',')[4]
+                            td=val.split(',')[5]
+                            td
+                                a.btn.btn-warning(href="/startExisting/start?index="+index) Start Server
