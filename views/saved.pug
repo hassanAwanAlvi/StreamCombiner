@@ -17,6 +17,7 @@ html(lang='en')
                         th Port
                         th Output file
                         th Operation
+                        th Operation
                 tbody
                     each val,index in saved_data
                         tr
@@ -25,3 +26,5 @@ html(lang='en')
                             td=val.split(',')[5]
                             td
                                 a.btn.btn-warning(href="/startExisting/start?index="+index) Start Server
+                            td
+                                a.btn.btn-info(href="/startExisting/edit?index="+index) Edit Server

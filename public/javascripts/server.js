@@ -18,7 +18,7 @@ Gport = port;
             dir: 'public/videos/'  // Directory that input files are stored
         });
 
-   // nullsrc=size=640x480
+
 
     var command =  ffmpeg();
     command.input(host1).input(host2).input(host3).input(host4).addOptions([

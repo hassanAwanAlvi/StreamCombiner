@@ -91,4 +91,74 @@ router.get('/start', function(req, res, next) {
 
 
 });
+
+router.get('/edit', function(req, res, next) {
+
+
+    var allDataM = []
+    if (fs.existsSync('saved')) {
+
+        fs.readFile('saved', 'utf8', function (err, data) {
+            if (err) {
+                return console.log(err);
+            }
+
+            var allData = data.split('\n');
+            for (var i = 0; i < allData.length; i++) {
+                if (allData[i].split(',').length == 6) {
+
+                    allDataM.push(allData[i]);
+
+                }
+            }
+
+
+
+
+            var index = req.param('index');
+
+
+
+
+            var line = allDataM[index].split(',');
+            var host1 = line[0];
+            var host2 = line[1];
+            var host3 = line[2];
+            var host4 = line[3];
+
+            var port = line[4];
+            var output = line[5];
+
+
+            if(state.getPorts().indexOf(port) == -1 && state.getOutputFile().indexOf(output) == -1)
+            {
+
+                allDataM.splice(index, 1);
+
+                fs.writeFile("saved", allDataM.join('\n') + '\n', function (err) {
+                    if (err) {
+                        res.send('Error Saving file');
+                        return;
+                    }
+
+                    res.render('index', { title: 'Express', line : line });
+
+                });
+
+
+
+
+            }
+            else
+            {
+                res.send('This server is running kindly turn it off and then edit it');
+            }
+
+        });
+
+    }
+
+
+
+});
 module.exports = router;

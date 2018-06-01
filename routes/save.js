@@ -25,7 +25,7 @@ router.get('/', function(req, res, next)
                 return;
             }
 
-            res.send('Saved successfully !!');
+            res.send('Saved successfully !! <br><br> <a href="/"> Go Back Home</a>');
             return;
         });
 
@@ -53,14 +53,12 @@ router.get('/', function(req, res, next)
                     return;
                 }
 
-                res.send('Saved successfully !!');
+                res.send('Saved successfully !! <br><br> <a href="/"> Go Back Home</a>');
                 return;
             });
 
         });
     }
-
-
 
 
 });
